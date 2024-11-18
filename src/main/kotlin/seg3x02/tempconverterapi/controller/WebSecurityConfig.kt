@@ -26,15 +26,15 @@ class WebSecurityConfig {
 
     @Bean
     fun userDetailsService(passwordEncoder: PasswordEncoder): UserDetailsService {
-        val admin = User.withUsername("admin")
-            .password(passwordEncoder.encode("admin"))
-            .roles("ADMIN")
-            .build()
-        val user = User.withUsername("user")
-            .password(passwordEncoder.encode("password"))
+        val user1 = User.withUsername("user1")
+            .password(passwordEncoder.encode("pass1"))
             .roles("USER")
             .build()
-        return InMemoryUserDetailsManager(admin, user)
+        val user2 = User.withUsername("user2")
+            .password(passwordEncoder.encode("pass2"))
+            .roles("USER")
+            .build()
+        return InMemoryUserDetailsManager(user1, user2)
     }
 
     @Bean
